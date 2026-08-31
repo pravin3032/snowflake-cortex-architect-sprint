@@ -1,80 +1,85 @@
-# Snowflake Cortex Architect Sprint
+# Snowflake Production & Cortex AI Architect Sprint
 
-A framework-free, local-first learning and incident-response dashboard for developing production Snowflake + Cortex AI architecture judgment.
+An interactive, local-first mastery system for becoming production-ready and principal-interview-ready across Snowflake Data Platform and Cortex AI architecture.
 
-## Why this improves the original proposal
+**Live dashboard:** https://pravin3032.github.io/snowflake-cortex-architect-sprint/
 
-The initial concept had a useful reference architecture, but it was mainly a scaffold. This implementation adds:
+## Version 2 scope
 
-- **Measurable L0–L6 progression** with explicit targets, outcomes, evidence, and production tests.
-- **18 role-aligned modules** across data, incremental processing, governance, Cortex AI, application engineering, reliability, and FinOps.
-- **Interactive architecture inspection** across runtime, security, and observability lenses.
-- **Six scored incident drills** that require evidence selection, root-cause diagnosis, containment, and runbook review.
-- **Architecture gates** covering grain, SLO/RPO/RTO, replay, least privilege, retention, telemetry, AI quality, and cost.
-- **Evidence portfolio** for GitHub links, ADRs, diagrams, benchmarks, SQL labs, and incident write-ups.
-- **Persistent progress** through browser local storage, with JSON export/import.
-- **GitHub Pages deployment** without Node.js, a backend, or secrets.
+The expanded dashboard maps the complete 62-section master prompt into:
+
+- **69 granular modules** across 12 architecture domains;
+- **1,095 named micro-topics** and searchable production details;
+- a **62-section traceability matrix**;
+- evidence-backed **L0–L6 mastery tracking**;
+- guided study sessions using **Parts A–O**;
+- a flagship Enterprise Customer Support Data + AI architecture;
+- **12 scored production incidents** plus a broader failure taxonomy;
+- nine decision guides and persistent ADRs;
+- 30 principal interview/whiteboard prompts;
+- eight-category interview scoring and gap plans;
+- evidence portfolio, spaced-practice signals, and JSON import/export;
+- verified product-accuracy notes with official Snowflake links.
+
+## Design principle
+
+The dashboard does not equate moving a slider with mastery. Every module includes:
+
+1. an observable outcome;
+2. micro-topics;
+3. a required artifact;
+4. a hands-on lab;
+5. a production failure;
+6. an interview defense;
+7. a target depth based on role priority.
+
+Progress is meaningful only when the artifact exists and the production test can be completed and defended without hints.
+
+## Ten workspaces
+
+1. **Command center** — readiness, weak-area adaptation, production gates.
+2. **62-section coverage** — prompt-to-module traceability and failure taxonomy.
+3. **Mastery roadmap** — filters for domain, depth, week, and any micro-topic.
+4. **Guided session** — scenario, discovery, design, failure, recovery, security, cost, interview, score, and gap plan.
+5. **Flagship system** — runtime, lineage, security, and recovery lenses.
+6. **Decisions & ADRs** — trade-offs, evidence, risks, mitigation, reversal triggers.
+7. **Incident lab** — timed evidence selection, diagnosis, containment, and runbooks.
+8. **Interview lab** — audience-aware principal questions and eight-category scoring.
+9. **Evidence portfolio** — code, SQL, diagrams, ADRs, evaluations, and postmortems.
+10. **Product accuracy** — current official product notes and verification cautions.
 
 ## Run locally
 
-Open `index.html` directly, or use a local server:
+Open `index.html`, or serve the directory with any static web server.
 
-```bash
-python3 -m http.server 8000
-```
+No build tool, framework, backend, database, secret, or network request is required. Progress is stored in browser `localStorage` and can be exported as JSON.
 
-Then visit `http://localhost:8000`.
+## GitHub Pages
 
-## Deploy to GitHub Pages
-
-1. Open **Settings → Pages** in the repository.
-2. Under **Build and deployment**, select **GitHub Actions**.
-3. Push to `main`. The included workflow publishes the static site.
+The included workflow deploys the repository as a static GitHub Pages site after a push to `main`.
 
 ## Repository map
 
 ```text
 .
-├── index.html                        # Accessible dashboard shell
+├── index.html
 ├── assets/
-│   ├── styles.css                    # Responsive design system
-│   └── app.js                        # Curriculum, state, incidents, UI
+│   ├── curriculum.js      # Modules, coverage, decisions, sources, failures
+│   ├── app.js             # State, scoring, sessions, incidents, ADRs, interviews
+│   └── styles.css         # Responsive design system
 ├── docs/
-│   └── architecture-review.md        # Audit and improvement rationale
-└── .github/workflows/
-    └── pages.yml                     # Static GitHub Pages deployment
+│   ├── architecture-review.md
+│   └── research-sources.md
+└── .github/workflows/pages.yml
 ```
 
-## Mastery model
+## Product-accuracy rule
 
-| Level | Meaning | Evidence expectation |
-|---|---|---|
-| L0 | Aware | Recognize the concept |
-| L1 | Explain | Explain purpose and limits |
-| L2 | Implement | Build a working example |
-| L3 | Operate | Monitor and run it safely |
-| L4 | Optimize | Improve performance, cost, or quality |
-| L5 | Diagnose | Isolate failures using evidence |
-| L6 | Defend | Lead design review and incident response |
-
-Self-rating alone is not mastery. Each module includes a required artifact and a production test.
+Snowflake syntax, model availability, regional support, edition requirements, privileges, limits, pricing, GA/Preview status, and replication behavior can change. The dashboard links to official documentation and labels change-sensitive behavior. Verify the target account and current documentation before implementation.
 
 ## Data and privacy
 
-- Progress is stored only in the current browser using `localStorage`.
-- Exported progress is a JSON file controlled by the user.
-- The dashboard makes no network requests and contains no credentials.
-- Example telemetry is explicitly labeled as simulated.
-
-## Extending the project
-
-Content is defined in `assets/app.js` as plain JavaScript objects:
-
-- `MODULES` — add curriculum modules.
-- `INCIDENTS` — add scored failure scenarios.
-- `ARCH` — update architecture component controls and failure modes.
-- `GATES` — change production review gates.
-
-## Important implementation note
-
-This dashboard is a learning and design-review tool, not a live Snowflake control plane. Production integrations should be added behind an authenticated service boundary and must not expose Snowflake or identity secrets to client-side code.
+- Progress stays in the current browser unless exported.
+- The dashboard contains no credentials and makes no application data calls.
+- Example SLOs, incidents, and telemetry are simulations for training.
+- The dashboard is a learning/design-review tool, not a live Snowflake control plane.
