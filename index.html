@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive Snowflake and Cortex AI architecture mastery dashboard.">
+  <meta name="theme-color" content="#07111f">
+  <title>Snowflake Cortex Architect Sprint</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <a class="brand" href="#overview" aria-label="Snowflake Cortex Architect Sprint home">
+        <span class="brand-mark">S</span>
+        <span><strong>Architect Sprint</strong><small>Snowflake + Cortex AI</small></span>
+      </a>
+      <nav id="primary-nav">
+        <a class="nav-link active" href="#overview" data-view="overview"><span>01</span> Command center</a>
+        <a class="nav-link" href="#roadmap" data-view="roadmap"><span>02</span> Mastery roadmap</a>
+        <a class="nav-link" href="#architecture" data-view="architecture"><span>03</span> Architecture lab</a>
+        <a class="nav-link" href="#incidents" data-view="incidents"><span>04</span> Incident lab</a>
+        <a class="nav-link" href="#evidence" data-view="evidence"><span>05</span> Evidence portfolio</a>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="status-line"><span class="status-dot"></span> Local-first workspace</div>
+        <button class="ghost-button full" id="export-state">Export progress</button>
+        <label class="ghost-button full file-button">Import progress<input id="import-state" type="file" accept="application/json"></label>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <button id="menu-button" class="icon-button mobile-only" aria-label="Open navigation">☰</button>
+        <div class="crumb">Principal Architect Lab <span>/</span> <strong id="view-label">Command center</strong></div>
+        <div class="top-actions">
+          <span class="save-state" id="save-state">Saved locally</span>
+          <button class="primary-button" data-jump="incidents">Run a drill <span>→</span></button>
+        </div>
+      </header>
+
+      <main id="main">
+        <section class="view active" id="overview" aria-labelledby="overview-title">
+          <div class="hero-grid">
+            <div>
+              <p class="eyebrow">12-week role-aligned system</p>
+              <h1 id="overview-title">Build judgment, not just feature recall.</h1>
+              <p class="hero-copy">A measurable learning and incident-response workspace for designing secure, observable Snowflake Cortex platforms.</p>
+              <div class="hero-actions">
+                <button class="primary-button" data-jump="roadmap">Continue roadmap <span>→</span></button>
+                <button class="ghost-button" data-jump="architecture">Inspect system</button>
+              </div>
+            </div>
+            <div class="score-card">
+              <div class="score-ring" id="score-ring" aria-label="Overall mastery score"><span id="overall-score">0</span><small>/100</small></div>
+              <div><p class="eyebrow">Readiness index</p><h2 id="readiness-label">Foundation</h2><p id="next-milestone">Complete a module to establish a baseline.</p></div>
+            </div>
+          </div>
+
+          <div class="metric-grid" aria-label="Program metrics">
+            <article class="metric-card"><span>Mastery</span><strong id="metric-mastery">0%</strong><small>weighted L0–L6 progress</small></article>
+            <article class="metric-card"><span>Evidence</span><strong id="metric-evidence">0</strong><small>portfolio artifacts logged</small></article>
+            <article class="metric-card"><span>Incidents</span><strong id="metric-incidents">0</strong><small>diagnostic drills resolved</small></article>
+            <article class="metric-card"><span>Risk posture</span><strong id="metric-risk">High</strong><small>based on weak domains</small></article>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel span-2">
+              <div class="panel-head"><div><p class="eyebrow">Competency heatmap</p><h2>Domain readiness</h2></div><button class="text-button" data-jump="roadmap">View roadmap</button></div>
+              <div id="domain-bars" class="domain-bars"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-head"><div><p class="eyebrow">Next best action</p><h2>Focused practice</h2></div><span class="pill cyan">Adaptive</span></div>
+              <div id="next-action" class="next-action"></div>
+            </article>
+            <article class="panel span-2">
+              <div class="panel-head"><div><p class="eyebrow">Architecture gates</p><h2>Production review checklist</h2></div><span id="gate-count" class="mono">0 / 8</span></div>
+              <div id="gate-list" class="gate-list"></div>
+            </article>
+            <article class="panel telemetry-panel">
+              <div class="panel-head"><div><p class="eyebrow">SLO snapshot</p><h2>Platform telemetry</h2></div><span class="live-badge"><i></i> simulated</span></div>
+              <div class="telemetry-list">
+                <div><span>Freshness lag</span><strong>02:14</strong><em class="good">within 5m</em></div>
+                <div><span>P95 retrieval</span><strong>684ms</strong><em class="warn">+11%</em></div>
+                <div><span>Groundedness</span><strong>0.91</strong><em class="good">target ≥ .88</em></div>
+                <div><span>Cost / answer</span><strong>$0.042</strong><em class="good">within budget</em></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="roadmap" aria-labelledby="roadmap-title">
+          <div class="page-head">
+            <div><p class="eyebrow">Competency system</p><h1 id="roadmap-title">Mastery roadmap</h1><p>Each module has an explicit level, outcome, artifact, and production test.</p></div>
+            <div class="filter-row">
+              <label class="search-box">⌕<input id="module-search" type="search" placeholder="Search modules"></label>
+              <select id="domain-filter" aria-label="Filter by domain"><option value="all">All domains</option></select>
+            </div>
+          </div>
+          <div class="level-legend" aria-label="Mastery level legend">
+            <span><b>L0</b> aware</span><span><b>L1</b> explain</span><span><b>L2</b> implement</span><span><b>L3</b> operate</span><span><b>L4</b> optimize</span><span><b>L5</b> diagnose</span><span><b>L6</b> defend</span>
+          </div>
+          <div id="module-list" class="module-list"></div>
+        </section>
+
+        <section class="view" id="architecture" aria-labelledby="architecture-title">
+          <div class="page-head">
+            <div><p class="eyebrow">Reference platform</p><h1 id="architecture-title">Interactive architecture lab</h1><p>Select a component to inspect its responsibilities, controls, telemetry, and failure modes.</p></div>
+            <div class="architecture-modes" role="group" aria-label="Architecture lens">
+              <button class="mode active" data-mode="runtime">Runtime</button><button class="mode" data-mode="security">Security</button><button class="mode" data-mode="observability">Telemetry</button>
+            </div>
+          </div>
+          <div class="architecture-layout">
+            <div class="diagram-panel" aria-label="System architecture diagram">
+              <svg id="architecture-svg" viewBox="0 0 980 570" role="img" aria-labelledby="diagram-title diagram-desc">
+                <title id="diagram-title">Snowflake Cortex enterprise platform</title>
+                <desc id="diagram-desc">Flow from enterprise channels through an API gateway and Cortex orchestration to structured and unstructured Snowflake data services.</desc>
+                <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z"></path></marker></defs>
+                <g class="edges">
+                  <path d="M490 90V130"></path><path d="M490 200V240"></path><path d="M440 310L285 365"></path><path d="M540 310L695 365"></path><path d="M285 435V480"></path><path d="M695 435V480"></path><path d="M390 275H150V515H205"></path><path d="M590 275H830V515H775"></path>
+                </g>
+                <g class="arch-node" data-node="channels" tabindex="0" role="button"><rect x="370" y="30" width="240" height="60" rx="12"></rect><text x="490" y="56">ENTERPRISE CHANNELS</text><text class="sub" x="490" y="76">React · Teams · ServiceNow</text></g>
+                <g class="arch-node" data-node="api" tabindex="0" role="button"><rect x="350" y="130" width="280" height="70" rx="12"></rect><text x="490" y="158">FASTAPI TRUST BOUNDARY</text><text class="sub" x="490" y="180">OAuth · policy · trace context</text></g>
+                <g class="arch-node" data-node="agent" tabindex="0" role="button"><rect x="370" y="240" width="240" height="70" rx="12"></rect><text x="490" y="268">CORTEX ORCHESTRATOR</text><text class="sub" x="490" y="290">intent · tools · guardrails</text></g>
+                <g class="arch-node" data-node="analyst" tabindex="0" role="button"><rect x="165" y="365" width="240" height="70" rx="12"></rect><text x="285" y="393">CORTEX ANALYST</text><text class="sub" x="285" y="415">semantic model · verified SQL</text></g>
+                <g class="arch-node" data-node="search" tabindex="0" role="button"><rect x="575" y="365" width="240" height="70" rx="12"></rect><text x="695" y="393">CORTEX SEARCH</text><text class="sub" x="695" y="415">hybrid retrieval · ACL filters</text></g>
+                <g class="arch-node" data-node="structured" tabindex="0" role="button"><rect x="165" y="480" width="240" height="70" rx="12"></rect><text x="285" y="508">STRUCTURED PLATFORM</text><text class="sub" x="285" y="530">CDC · dbt · policies · marts</text></g>
+                <g class="arch-node" data-node="unstructured" tabindex="0" role="button"><rect x="575" y="480" width="240" height="70" rx="12"></rect><text x="695" y="508">KNOWLEDGE PLATFORM</text><text class="sub" x="695" y="530">parse · chunk · embed · serve</text></g>
+                <g class="arch-node support" data-node="observability" tabindex="0" role="button"><rect x="20" y="240" width="170" height="70" rx="12"></rect><text x="105" y="268">OBSERVABILITY</text><text class="sub" x="105" y="290">traces · SLOs · cost</text></g>
+                <g class="arch-node support" data-node="governance" tabindex="0" role="button"><rect x="790" y="240" width="170" height="70" rx="12"></rect><text x="875" y="268">GOVERNANCE</text><text class="sub" x="875" y="290">RAP · tags · audit</text></g>
+              </svg>
+              <div class="diagram-legend"><span><i class="legend-core"></i> runtime service</span><span><i class="legend-control"></i> cross-cutting control</span><span>Click nodes to inspect</span></div>
+            </div>
+            <aside class="inspector" id="architecture-inspector" aria-live="polite"></aside>
+          </div>
+          <div class="decision-strip"><div><p class="eyebrow">Design decision</p><strong>Streams + Tasks or Dynamic Tables?</strong></div><p id="decision-copy">Choose Dynamic Tables for declarative SQL DAGs with freshness targets. Choose Streams + Tasks for procedural control, custom transactions, or side effects.</p><button class="ghost-button" id="cycle-decision">Next trade-off</button></div>
+        </section>
+
+        <section class="view" id="incidents" aria-labelledby="incidents-title">
+          <div class="page-head">
+            <div><p class="eyebrow">Failure-driven learning</p><h1 id="incidents-title">Incident response lab</h1><p>Diagnose with evidence. Select observations, identify root cause, and choose containment before revealing the runbook.</p></div>
+            <button class="danger-button" id="new-incident">Generate incident</button>
+          </div>
+          <div id="incident-empty" class="empty-state"><div class="radar"><i></i><i></i><i></i></div><h2>No active incident</h2><p>Generate a scenario to test Snowflake, security, AI retrieval, and operations judgment.</p><button class="primary-button" id="empty-generate">Start first drill</button></div>
+          <div id="incident-workbench" class="incident-workbench hidden">
+            <article class="incident-banner"><div><span id="incident-severity" class="severity">SEV-2</span><span id="incident-id" class="mono">INC-000</span></div><div><h2 id="incident-title"></h2><p id="incident-symptom"></p></div><div class="timer"><span>Elapsed</span><strong id="incident-timer">00:00</strong></div></article>
+            <div class="incident-grid">
+              <article class="panel"><div class="panel-head"><div><p class="eyebrow">Step 1</p><h2>Collect evidence</h2></div><span id="evidence-counter" class="mono">0 selected</span></div><div id="evidence-options" class="check-list"></div></article>
+              <article class="panel"><div class="panel-head"><div><p class="eyebrow">Step 2</p><h2>Form a hypothesis</h2></div></div><label class="field">Probable root cause<select id="root-cause"></select></label><label class="field">Immediate containment<select id="containment"></select></label><label class="field">RCA notes<textarea id="rca-notes" rows="4" placeholder="State evidence → inference → next test"></textarea></label></article>
+              <article class="panel span-2 runbook-panel"><div class="panel-head"><div><p class="eyebrow">Step 3</p><h2>Decision and runbook</h2></div><button class="primary-button" id="submit-diagnosis">Submit diagnosis</button></div><div id="incident-result" class="incident-result muted">Submit your diagnosis to score the drill and reveal the resolution path.</div></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="evidence" aria-labelledby="evidence-title">
+          <div class="page-head">
+            <div><p class="eyebrow">Proof over self-rating</p><h1 id="evidence-title">Evidence portfolio</h1><p>Capture artifacts that demonstrate architecture judgment during interviews and design reviews.</p></div>
+            <button class="primary-button" id="add-evidence">Add artifact</button>
+          </div>
+          <div class="portfolio-summary"><div><strong id="portfolio-count">0</strong><span>artifacts</span></div><div><strong id="portfolio-domains">0</strong><span>domains covered</span></div><div><strong id="portfolio-reviewed">0</strong><span>review-ready</span></div><p>Recommended: ADR + diagram + runnable code + operational runbook for every critical domain.</p></div>
+          <div id="evidence-list" class="evidence-list"></div>
+          <div id="evidence-empty" class="empty-state compact"><h2>Your proof library is empty</h2><p>Add GitHub links, ADRs, SQL labs, diagrams, benchmarks, or incident write-ups.</p></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog id="module-dialog" class="modal"><form method="dialog"><button class="modal-close" aria-label="Close">×</button><div id="module-detail"></div></form></dialog>
+  <dialog id="evidence-dialog" class="modal"><form id="evidence-form"><button class="modal-close" type="button" data-close="evidence-dialog" aria-label="Close">×</button><p class="eyebrow">New portfolio artifact</p><h2>Add evidence</h2><label class="field">Title<input name="title" required placeholder="e.g. Cortex Search security ADR"></label><label class="field">Domain<select name="domain" id="evidence-domain"></select></label><label class="field">Artifact URL<input name="url" type="url" placeholder="https://github.com/..."></label><label class="field">What this proves<textarea name="proof" required rows="4" placeholder="Describe the decision, trade-off, test, and outcome."></textarea></label><label class="check-row"><input name="reviewed" type="checkbox"> Review-ready</label><div class="modal-actions"><button class="ghost-button" type="button" data-close="evidence-dialog">Cancel</button><button class="primary-button" type="submit">Save artifact</button></div></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
