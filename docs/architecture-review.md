@@ -1,96 +1,81 @@
-# Architecture Review and Improvement Plan
+# Architecture Review — Expanded Production Sprint
 
 ## Executive assessment
 
-The source proposal identifies the right capability areas—ingestion, incremental processing, governance, Cortex Analyst, Cortex Search, application services, and telemetry. Its main weakness is that it describes a repository more than it defines a learning system. A generated Next.js page with five checkboxes and three random incident strings does not create durable mastery.
+The master prompt is not a curriculum list; it is an operating model for architect development. A complete implementation must connect each topic to requirements, architecture, implementation, failure, recovery, security, performance, cost, observability, evidence, and interview defense.
 
-This implementation changes the unit of learning from **content consumed** to **evidence produced and failure handled**.
+Version 2 therefore changes the dashboard from a broad six-domain tracker into a detailed mastery system with 69 modules, 62-section traceability, guided A–O sessions, failure-driven practice, ADRs, product-accuracy notes, and evidence-backed scoring.
 
-## What was strong
+## Completeness criteria
 
-1. One end-to-end reference platform anchors otherwise fragmented features.
-2. It separates structured analytics from unstructured retrieval.
-3. It recognizes identity propagation and telemetry as architecture concerns.
-4. It distinguishes Dynamic Tables from Streams + Tasks at a high level.
-5. It calls for failure simulation rather than passive reading.
+A topic is considered implemented in the learning system only when it has:
 
-## Gaps corrected
+1. a domain and target L0–L6 depth;
+2. searchable micro-topics;
+3. an observable outcome;
+4. a reviewable artifact;
+5. a hands-on proof;
+6. a production failure scenario;
+7. recovery and permanent-fix reasoning;
+8. an interview defense;
+9. prompt-section traceability;
+10. an official source when exact product behavior is change-sensitive.
 
-### 1. No mastery contract
+## Major improvements
 
-**Original gap:** Completion was a Boolean checkbox that displayed `L5/L6` immediately.
+### Granularity
 
-**Correction:** Every module now has:
+The original dashboard grouped the work into 18 broad modules. The expanded version uses 69 granular modules across platform, ingestion, CDC, processing, dbt, modeling, quality, performance, FinOps, security, governance, collaboration, DR, Snowpark, Cortex foundations, retrieval, semantic AI, agents, AI safety, applications, identity, delivery, operations, modernization, cloud integration, and leadership.
 
-- current level and target level;
-- observable outcome;
-- required portfolio artifact;
-- production-style verification test.
+### Traceability
 
-L0–L6 progression is therefore explicit and auditable.
+Every one of the 62 master-prompt sections appears in a searchable coverage matrix and maps to skill modules or cross-cutting coaching behavior.
 
-### 2. Incidents were labels, not simulations
+### Session continuity
 
-**Original gap:** A random string could be acknowledged but not investigated or scored.
+The guided-session workspace implements Parts A–O. It preserves module-specific drafts and locks coaching guidance until the learner records an architecture attempt.
 
-**Correction:** Each incident now includes symptoms, relevant and distracting observations, alternative root causes, containment choices, a timer, scoring, and a resolution runbook.
+### Failure depth
 
-### 3. Security was underspecified
+The incident lab now spans data completeness, CDC order, Stream staleness, task atomicity, tenant leakage, token expiry, Search regression, cost anomaly, semantic fanout, duplicate actions, regional recovery, and indirect prompt injection. A larger failure taxonomy remains visible for future drills.
 
-**Original gap:** Identity propagation referenced session context or roles without a complete trust-boundary model.
+### Decision quality
 
-**Correction:** The dashboard emphasizes:
+Nine decision guides cover ingestion, CDC, transformation, modeling, identity, model selection, agents, and retrieval. ADRs require context, options, choice, risks, mitigations, evidence, and a reversal trigger.
 
-- issuer, audience, signature, time, and scope validation;
-- deny-by-default tenant filters in retrieval;
-- delegated-user versus service-identity decisions;
-- authorization on every data path, not in the UI;
-- negative isolation tests as release gates.
+### Product accuracy
 
-### 4. AI quality lacked release engineering
+Official Snowflake documentation was reviewed for Dynamic Tables, Streams, Tasks, Cortex Analyst, Cortex Search, Cortex Agents, AI Functions, AI Guardrails, AI Observability, External OAuth, workload identity federation, and replication/failover. The dashboard labels edition, region, model, Preview/GA, and other change-sensitive behavior rather than presenting conceptual examples as guaranteed syntax.
 
-**Original gap:** Groundedness appeared as a log field but not as a governed release decision.
+### Interview and leadership behavior
 
-**Correction:** The learning system treats recall@k, execution accuracy, groundedness, refusal behavior, latency, ACL safety, and cost as joint release gates supported by golden datasets.
+The interview lab requires problem, constraint, options, decision, implementation, result, and trade-off. It supports engineer, manager, security, governance, executive, and principal-interviewer audiences with eight scoring categories and an explicit gap plan.
 
-### 5. Reliability and FinOps were secondary
+## Architecture principles enforced
 
-**Original gap:** The proposal included telemetry fields but no SLOs, error budgets, workload isolation, or unit economics.
+- Source CDC and Snowflake Streams solve different problems.
+- Replay uses source identity and offsets, not only timestamps.
+- Valid SQL can still be semantically wrong.
+- Retrieval filtering is part of authorization.
+- Guardrails do not replace RBAC, policies, or tool authorization.
+- A network timeout does not prove a business action failed.
+- Recovery is end-to-end and must include identity, integrations, applications, and validation.
+- FinOps changes must preserve quality, security, freshness, and recovery objectives.
+- Prompts, semantic views, Search indexes, agents, policies, and evaluation datasets are production artifacts.
+- Self-rating without evidence is not mastery.
 
-**Correction:** Dedicated curriculum and gates cover trace correlation, freshness, latency, cost per answer, scan/spill regressions, resource monitors, and workload blast radius.
+## Remaining implementation path
 
-### 6. Too much platform overhead for the first usable version
+The dashboard is deliberately static and local-first. The next increments should be added only in isolated, controlled environments:
 
-**Original gap:** Next.js, React, Tailwind, FastAPI, Terraform, dbt, and multiple CI pipelines were prescribed before validating the learning workflow.
+1. runnable Snowflake SQL labs with setup and teardown;
+2. dbt project fixtures and intentionally broken builds;
+3. semantic-view and Cortex Analyst golden datasets;
+4. Cortex Search retrieval/security regression packs;
+5. a minimal FastAPI trust boundary wired to a selected identity pattern;
+6. Terraform after cloud, account, edition, and topology decisions are known;
+7. destructive failure injection only in isolated schemas/accounts with budgets and cleanup.
 
-**Correction:** The first version is static, dependency-free, and deployable to GitHub Pages. Backend and Snowflake integrations can be added when a drill requires real execution. This reduces setup cost and security exposure.
+## Principal-ready definition
 
-## Technical cautions in the source proposal
-
-- Micro-partition size, automatic clustering behavior, Cortex feature interfaces, and identity-delegation mechanisms are product details that can evolve. Validate them against the Snowflake documentation for the account edition and release in use.
-- A backend cannot safely "proxy" user identity merely by assigning session variables. Authentication, authorization, role activation, connection pooling, and audit attribution require an explicit, tested pattern.
-- Cortex Search retrieval security must be enforced in query filters/index metadata and tested negatively. Hiding citations is not containment.
-- Dynamic Tables and Streams/Tasks should be selected from semantics and operational needs, not preference. Declarative freshness and procedural side effects have different failure and replay models.
-- An automated incident generator must not corrupt shared production resources. Use isolated schemas/accounts, fixtures, reversible fault injection, and budget guards.
-
-## Recommended next implementation increments
-
-1. Add runnable Snowflake SQL labs in isolated schemas with teardown scripts.
-2. Add a semantic-model golden dataset and execution-accuracy evaluator.
-3. Add a retrieval test pack with recall, groundedness, latency, and cross-tenant negative cases.
-4. Add FastAPI middleware only when a real identity provider and Snowflake connection pattern are selected.
-5. Add Terraform/dbt after the target account, cloud, edition, and deployment topology are known.
-6. Link every module to one ADR, one runnable artifact, and one operational runbook.
-
-## Definition of principal-ready
-
-A learner is not principal-ready because every slider says L6. Readiness requires the ability to:
-
-- state assumptions and business grain;
-- quantify freshness, recovery, latency, quality, and cost targets;
-- select and defend patterns under constraints;
-- prove tenant isolation and safe failure behavior;
-- diagnose from traces and query evidence;
-- recover without losing or duplicating data;
-- document trade-offs through reviewable artifacts;
-- lead a timed incident and produce a preventive RCA.
+Principal readiness requires the learner to design from a blank whiteboard, expose assumptions, quantify constraints, defend alternatives, implement the critical path, diagnose from evidence, recover without loss or duplicate effects, prove security isolation, optimize from measurements, document decisions, and lead the operating team.
